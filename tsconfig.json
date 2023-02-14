@@ -10,7 +10,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": [],
+    "types": ["@types/styled-components-react-native"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "plugins":[
