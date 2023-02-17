@@ -54,6 +54,7 @@ const Container = styled(ScreenWrapper)`
 const Wrapper = styled(ScreenWrapper)`
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 const Logo = styled.Image`
