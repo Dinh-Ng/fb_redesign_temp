@@ -1,13 +1,18 @@
-import React, {memo} from 'react';
+import React, {memo, useCallback} from 'react';
 import {View} from 'react-native';
 import styled from 'styled-components/native';
 
 import {IC_ADD, IC_SEARCH, IC_THREE_DOT, IMG_AVATAR, IMG_LOGO} from '@/assets';
 import {ScreenWrapper} from '@/components/ScreenWrapper';
+import {navigateToRegisterScreen} from '@/navigations/navigations';
 import GradientButton from '@/screens/Login/components/GradientButton';
 import {Colors} from '@/themes/Colors';
 
 const ProfileLoginScreen = () => {
+  const onPressCreateNewAccount = useCallback(() => {
+    navigateToRegisterScreen();
+  }, []);
+
   return (
     <Container>
       <Wrapper>
@@ -41,7 +46,10 @@ const ProfileLoginScreen = () => {
           </OptionButton>
         </OptionWrapper>
       </Wrapper>
-      <GradientButton title={'Create New Facebook Account'} />
+      <GradientButton
+        onPress={onPressCreateNewAccount}
+        title={'Create New Facebook Account'}
+      />
     </Container>
   );
 };

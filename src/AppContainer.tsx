@@ -6,6 +6,7 @@ import {navigationRef} from '@/navigations/navigations';
 import {loginOptions, rootOptions} from '@/navigations/options';
 import {Route} from '@/navigations/route';
 import ProfileLoginScreen from '@/screens/Login/ProfileLoginScreen';
+import RegisterScreen from '@/screens/Login/RegisterScreen';
 
 const RootStack = createStackNavigator();
 const LoginStack = createStackNavigator();
@@ -18,6 +19,10 @@ export const LoginContainer = memo(() => {
       <LoginStack.Screen
         name={Route.ProfileLoginScreen}
         component={ProfileLoginScreen}
+      />
+      <LoginStack.Screen
+        name={Route.RegisterScreen}
+        component={RegisterScreen}
       />
     </LoginStack.Navigator>
   );

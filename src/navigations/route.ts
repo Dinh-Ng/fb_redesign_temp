@@ -3,4 +3,5 @@ export const Route = {
   MainStackComponent: 'MainStackComponent',
   LoginContainer: 'LoginContainer',
   ProfileLoginScreen: 'ProfileLoginScreen',
+  RegisterScreen: 'RegisterScreen',
 };

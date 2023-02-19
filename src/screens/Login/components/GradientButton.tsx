@@ -7,11 +7,12 @@ import {Colors} from '@/themes/Colors';
 
 interface Props {
   title: string;
+  onPress?: () => void;
 }
 
-const GradientButton = ({title}: Props) => {
+const GradientButton = ({title, onPress}: Props) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <GradientWrapper
         colors={['#384CFF', '#00A3FF']}
         useAngle={true}
