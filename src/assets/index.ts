@@ -5,3 +5,4 @@ export const IC_BACK = require('./icons/Back.png');
 
 export const IMG_LOGO = require('./images/Logo.png');
 export const IMG_AVATAR = require('./images/Profile.png');
+export const IMG_ILLUSTRATION = require('./images/Illustration.png');
