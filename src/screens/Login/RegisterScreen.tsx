@@ -1,5 +1,6 @@
 import React, {memo, useCallback, useState} from 'react';
 import {Dimensions} from 'react-native';
+import DatePicker from 'react-native-date-picker';
 import {TextInput} from 'react-native-paper';
 import styled from 'styled-components/native';
 
@@ -40,6 +41,7 @@ const RegisterScreen = () => {
   ];
 
   const [pages, setPages] = useState<number>(0);
+  const [date, setDate] = useState(new Date());
 
   const handleNextButton = useCallback(() => {
     if (pages === dataTitle.length - 1) {
@@ -61,6 +63,10 @@ const RegisterScreen = () => {
             <NameInput selectionColor={Colors.primary} label={'First Name'} />
             <NameInput label={'Last Name'} />
           </NameWrapper>
+        )}
+
+        {pages === 2 && (
+          <DatePicker mode={'date'} date={date} onDateChange={setDate} />
         )}
 
         <GradientButton

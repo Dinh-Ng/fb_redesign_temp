@@ -8,6 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
+    "xcode": "open ios/fb_redesign_temp.xcworkspace",
+    "studio": "open -a /Applications/Android\\ Studio.app ./android/",
     "pod-install": "cd ios && pod install && cd .."
   },
   "dependencies": {
@@ -16,6 +18,7 @@
     "@react-navigation/stack": "^6.3.12",
     "react": "18.2.0",
     "react-native": "0.71.2",
+    "react-native-date-picker": "^4.2.9",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-linear-gradient": "^2.6.2",
     "react-native-paper": "^5.2.0",
