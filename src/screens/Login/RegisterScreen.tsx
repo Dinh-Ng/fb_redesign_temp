@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 
 import {IMG_ILLUSTRATION} from '@/assets';
 import {ScreenWrapper} from '@/components/ScreenWrapper';
+import CheckButton from '@/screens/Login/components/CheckButton';
 import GradientButton from '@/screens/Login/components/GradientButton';
 import RegisterHeader from '@/screens/Login/components/RegisterHeader';
 import {Colors} from '@/themes/Colors';
@@ -41,7 +42,8 @@ const RegisterScreen = () => {
   ];
 
   const [pages, setPages] = useState<number>(0);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date>(new Date());
+  const [gender, setGender] = useState<string>('female');
 
   const handleNextButton = useCallback(() => {
     if (pages === dataTitle.length - 1) {
@@ -67,6 +69,29 @@ const RegisterScreen = () => {
 
         {pages === 2 && (
           <DatePicker mode={'date'} date={date} onDateChange={setDate} />
+        )}
+
+        {pages === 3 && (
+          <GenderSelect>
+            <CheckButton
+              isChecked={gender === 'female'}
+              onPress={() => setGender('female')}
+              title={'Female'}
+            />
+            <CheckButton
+              isChecked={gender === 'male'}
+              onPress={() => setGender('male')}
+              title={'Male'}
+            />
+            <CheckButton
+              isChecked={gender === 'custom'}
+              onPress={() => setGender('custom')}
+              title={'Custom'}
+              description={
+                'Select custom to choose another gender, or if you’d rather not say'
+              }
+            />
+          </GenderSelect>
         )}
 
         <GradientButton
@@ -134,6 +159,12 @@ const NameInput = styled(TextInput)`
   background-color: white;
   flex: 1;
   margin: 0 15px;
+`;
+
+const GenderSelect = styled.View`
+  margin-bottom: 50px;
+  width: 100%;
+  padding: 0 40px;
 `;
 
 export default memo(RegisterScreen);
