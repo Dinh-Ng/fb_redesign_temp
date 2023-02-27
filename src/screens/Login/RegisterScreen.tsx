@@ -50,8 +50,15 @@ const RegisterScreen = () => {
       title: 'Password',
       stepTitle: 'Choose a password',
       stepDescription:
-        'Create a password at least with 6 chaeacters.\n' +
+        'Create a password at least with 6 characters.\n' +
         'It should be something others couldn’t guess.',
+    },
+    {
+      title: 'Terms & Privacy',
+      stepTitle: 'Finishing signing up',
+      stepDescription:
+        'By tapping Sign up, you agree to our \n' +
+        'Terms, Data Policy and Cookies Policy',
     },
   ];
 
@@ -106,6 +113,18 @@ const RegisterScreen = () => {
               }
             />
           </GenderSelect>
+        )}
+
+        {pages === 4 && (
+          <NameWrapper>
+            <PhoneInput label={'Mobile number'} />
+          </NameWrapper>
+        )}
+
+        {pages === 5 && (
+          <NameWrapper>
+            <PhoneInput label={'Password'} />
+          </NameWrapper>
         )}
 
         <GradientButton
@@ -170,7 +189,7 @@ const NameWrapper = styled.View`
 `;
 
 const NameInput = styled(TextInput)`
-  background-color: white;
+  background-color: ${Colors.white};
   flex: 1;
   margin: 0 15px;
 `;
@@ -179,6 +198,12 @@ const GenderSelect = styled.View`
   margin-bottom: 50px;
   width: 100%;
   padding: 0 40px;
+`;
+
+const PhoneInput = styled(TextInput)`
+  background-color: ${Colors.white};
+  flex: 1;
+  margin: 0 15px;
 `;
 
 export default memo(RegisterScreen);
