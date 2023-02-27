@@ -39,6 +39,20 @@ const RegisterScreen = () => {
       stepDescription:
         'You can change who sees your gender on your profile later.',
     },
+    {
+      title: 'Mobile number',
+      stepTitle: 'Enter your mobile number',
+      stepDescription:
+        'Enter the mobile number where you can be reached. \n' +
+        'No one else will see this on your profile',
+    },
+    {
+      title: 'Password',
+      stepTitle: 'Choose a password',
+      stepDescription:
+        'Create a password at least with 6 chaeacters.\n' +
+        'It should be something others couldn’t guess.',
+    },
   ];
 
   const [pages, setPages] = useState<number>(0);
