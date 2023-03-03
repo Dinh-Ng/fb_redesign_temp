@@ -4,4 +4,5 @@ export const Route = {
   LoginContainer: 'LoginContainer',
   ProfileLoginScreen: 'ProfileLoginScreen',
   RegisterScreen: 'RegisterScreen',
+  LoginScreen: 'LoginScreen',
 };

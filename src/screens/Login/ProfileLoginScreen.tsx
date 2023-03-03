@@ -4,13 +4,20 @@ import styled from 'styled-components/native';
 
 import {IC_ADD, IC_SEARCH, IC_THREE_DOT, IMG_AVATAR, IMG_LOGO} from '@/assets';
 import {ScreenWrapper} from '@/components/ScreenWrapper';
-import {navigateToRegisterScreen} from '@/navigations/navigations';
+import {
+  navigateToLoginScreen,
+  navigateToRegisterScreen,
+} from '@/navigations/navigations';
 import GradientButton from '@/screens/Login/components/GradientButton';
 import {Colors} from '@/themes/Colors';
 
 const ProfileLoginScreen = () => {
   const onPressCreateNewAccount = useCallback(() => {
     navigateToRegisterScreen();
+  }, []);
+
+  const navigateLogin = useCallback(() => {
+    navigateToLoginScreen();
   }, []);
 
   return (
@@ -32,7 +39,7 @@ const ProfileLoginScreen = () => {
         </ProfileButton>
 
         <OptionWrapper>
-          <OptionButton>
+          <OptionButton onPress={navigateLogin}>
             <OptionIcon>
               <OptionIconAdd source={IC_ADD} />
             </OptionIcon>

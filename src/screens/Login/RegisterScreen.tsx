@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 
 import {IMG_ILLUSTRATION} from '@/assets';
 import {ScreenWrapper} from '@/components/ScreenWrapper';
+import {navigateToLoginScreen} from '@/navigations/navigations';
 import CheckButton from '@/screens/Login/components/CheckButton';
 import GradientButton from '@/screens/Login/components/GradientButton';
 import RegisterHeader from '@/screens/Login/components/RegisterHeader';
@@ -51,7 +52,7 @@ const RegisterScreen = () => {
       stepTitle: 'Choose a password',
       stepDescription:
         'Create a password at least with 6 characters.\n' +
-        'It should be something others couldn’t guess.',
+        'It should be something others could n’t guess.',
     },
     {
       title: 'Terms & Privacy',
@@ -68,10 +69,15 @@ const RegisterScreen = () => {
 
   const handleNextButton = useCallback(() => {
     if (pages === dataTitle.length - 1) {
+      navigateLogin();
       return;
     }
     setPages(pages + 1);
   }, [dataTitle.length, pages]);
+
+  const navigateLogin = useCallback(() => {
+    navigateToLoginScreen();
+  }, []);
 
   return (
     <Container>
@@ -133,7 +139,7 @@ const RegisterScreen = () => {
         />
       </Wrapper>
       {pages === 0 && (
-        <FooterButton>
+        <FooterButton onPress={navigateLogin}>
           <FooterButtonText>{'Already have an account?'}</FooterButtonText>
         </FooterButton>
       )}
