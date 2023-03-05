@@ -16,3 +16,7 @@ export const createNavigate =
 export const navigateToRegisterScreen = createNavigate(Route.RegisterScreen);
 
 export const navigateToLoginScreen = createNavigate(Route.LoginScreen);
+
+export const navigateToForgotPasswordScreen = createNavigate(
+  Route.ForgotPasswordScreen,
+);

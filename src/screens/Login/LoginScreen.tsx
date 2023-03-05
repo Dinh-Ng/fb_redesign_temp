@@ -1,15 +1,26 @@
-import React, {memo} from 'react';
+import React, {memo, useCallback} from 'react';
 import {StyleSheet} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {TextInput} from 'react-native-paper';
 import styled from 'styled-components/native';
 
 import {IMG_LOGO} from '@/assets';
-import {ScreenWrapper} from '@/components/ScreenWrapper';
+import {
+  navigateToForgotPasswordScreen,
+  navigateToRegisterScreen,
+} from '@/navigations/navigations';
 import GradientButton from '@/screens/Login/components/GradientButton';
 import {Colors} from '@/themes/Colors';
 
 const LoginScreen = () => {
+  const handleSignUp = useCallback(() => {
+    navigateToRegisterScreen();
+  }, []);
+
+  const handleForgotPassword = useCallback(() => {
+    navigateToForgotPasswordScreen();
+  }, []);
+
   return (
     <Wrapper contentContainerStyle={styles.wrapper}>
       <Logo source={IMG_LOGO} resizeMode={'stretch'} />
@@ -18,7 +29,7 @@ const LoginScreen = () => {
         <Input label={'Password'} />
       </InputWrapper>
       <GradientButton title={'Log In'} />
-      <ForgotPassButton>
+      <ForgotPassButton onPress={handleForgotPassword}>
         <ForgotPassText>Forgot Password?</ForgotPassText>
       </ForgotPassButton>
 
@@ -28,7 +39,7 @@ const LoginScreen = () => {
         <Line />
       </LineWrapper>
 
-      <SignUpButton>
+      <SignUpButton onPress={handleSignUp}>
         <SignUpText>Create new Facebook account</SignUpText>
       </SignUpButton>
     </Wrapper>

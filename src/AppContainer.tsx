@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {navigationRef} from '@/navigations/navigations';
 import {loginOptions, rootOptions} from '@/navigations/options';
 import {Route} from '@/navigations/route';
+import ForgotPasswordScreen from '@/screens/Login/ForgotPasswordScreen';
 import LoginScreen from '@/screens/Login/LoginScreen';
 import ProfileLoginScreen from '@/screens/Login/ProfileLoginScreen';
 import RegisterScreen from '@/screens/Login/RegisterScreen';
@@ -26,6 +27,10 @@ export const LoginContainer = memo(() => {
         component={RegisterScreen}
       />
       <LoginStack.Screen name={Route.LoginScreen} component={LoginScreen} />
+      <LoginStack.Screen
+        name={Route.ForgotPasswordScreen}
+        component={ForgotPasswordScreen}
+      />
     </LoginStack.Navigator>
   );
 });

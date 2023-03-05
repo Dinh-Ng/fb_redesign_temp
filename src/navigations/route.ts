@@ -5,4 +5,5 @@ export const Route = {
   ProfileLoginScreen: 'ProfileLoginScreen',
   RegisterScreen: 'RegisterScreen',
   LoginScreen: 'LoginScreen',
+  ForgotPasswordScreen: 'ForgotPasswordScreen',
 };
