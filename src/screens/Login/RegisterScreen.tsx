@@ -67,17 +67,17 @@ const RegisterScreen = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [gender, setGender] = useState<string>('female');
 
+  const navigateLogin = useCallback(() => {
+    navigateToLoginScreen();
+  }, []);
+
   const handleNextButton = useCallback(() => {
     if (pages === dataTitle.length - 1) {
       navigateLogin();
       return;
     }
     setPages(pages + 1);
-  }, [dataTitle.length, pages]);
-
-  const navigateLogin = useCallback(() => {
-    navigateToLoginScreen();
-  }, []);
+  }, [dataTitle.length, navigateLogin, pages]);
 
   return (
     <Container>
