@@ -1,10 +1,10 @@
 import React, {memo, useCallback, useState} from 'react';
 import {Dimensions} from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import {TextInput} from 'react-native-paper';
 import styled from 'styled-components/native';
 
 import {IMG_ILLUSTRATION} from '@/assets';
+import CommonInput from '@/components/CommonInput';
 import {ScreenWrapper} from '@/components/ScreenWrapper';
 import {navigateToLoginScreen} from '@/navigations/navigations';
 import CheckButton from '@/screens/Login/components/CheckButton';
@@ -194,8 +194,7 @@ const NameWrapper = styled.View`
   padding: 0 25px;
 `;
 
-const NameInput = styled(TextInput)`
-  background-color: ${Colors.white};
+const NameInput = styled(CommonInput)`
   flex: 1;
   margin: 0 15px;
 `;
@@ -206,8 +205,7 @@ const GenderSelect = styled.View`
   padding: 0 40px;
 `;
 
-const PhoneInput = styled(TextInput)`
-  background-color: ${Colors.white};
+const PhoneInput = styled(CommonInput)`
   flex: 1;
   margin: 0 15px;
 `;

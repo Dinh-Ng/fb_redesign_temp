@@ -5,6 +5,7 @@ import {TextInput} from 'react-native-paper';
 import styled from 'styled-components/native';
 
 import {IMG_LOGO} from '@/assets';
+import CommonInput from '@/components/CommonInput';
 import {
   navigateToForgotPasswordScreen,
   navigateToRegisterScreen,
@@ -67,11 +68,8 @@ const InputWrapper = styled.View`
   margin: 50px 0;
 `;
 
-const Input = styled(TextInput)`
+const Input = styled(CommonInput)`
   width: 100%;
-  background-color: transparent;
-  font-weight: 400;
-  font-size: 14px;
 `;
 
 const ForgotPassButton = styled.TouchableOpacity`
