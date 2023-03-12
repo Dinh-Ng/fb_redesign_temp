@@ -1,9 +1,10 @@
 import React, {memo, useCallback, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {TextInput} from 'react-native-paper';
 import styled from 'styled-components/native';
 
+import {IC_EMAIL, IC_SMS} from '@/assets';
+import CommonInput from '@/components/CommonInput';
 import {ScreenWrapper} from '@/components/ScreenWrapper';
 import GradientButton from '@/screens/Login/components/GradientButton';
 import RegisterHeader from '@/screens/Login/components/RegisterHeader';
@@ -36,6 +37,15 @@ const ForgotPasswordScreen = () => {
       stepDescription: 'We sent 6 digit code to your email address.',
       button: 'Continue',
     },
+    {
+      title: 'Reset your password',
+      stepTitle: 'Create new password',
+      stepDescription:
+        'You will use this password to access your account.\n' +
+        'Enter a combination of at least six numbers, letters\n' +
+        'and punctuation marks.',
+      button: 'Log in',
+    },
   ];
 
   const [pages, setPages] = useState<number>(0);
@@ -50,7 +60,7 @@ const ForgotPasswordScreen = () => {
       return;
     }
     setPages(pages + 1);
-  }, [pages]);
+  }, [dataTitle.length, pages]);
 
   return (
     <Container>
@@ -66,10 +76,25 @@ const ForgotPasswordScreen = () => {
 
         {pages === 2 && <CodeInput keyboardType={'number-pad'} />}
 
+        {pages === 3 && <NewPassInput />}
+
         <GradientButton
           onPress={handleNextButton}
           title={dataTitle[pages].button}
         />
+
+        {pages === 2 && (
+          <ReSendCodeWrapper>
+            <ReSendCodeButton>
+              <ReSendCodeIcon source={IC_EMAIL} />
+              <ReSendCodeText>{'Send email again'}</ReSendCodeText>
+            </ReSendCodeButton>
+            <ReSendCodeButton>
+              <ReSendCodeIcon source={IC_SMS} />
+              <ReSendCodeText>{'Get code via SMS'}</ReSendCodeText>
+            </ReSendCodeButton>
+          </ReSendCodeWrapper>
+        )}
       </Wrapper>
       {pages === 0 && (
         <FooterButton onPress={() => setPages(1)}>
@@ -96,10 +121,7 @@ const styles = StyleSheet.create({
 
 const Container = styled(ScreenWrapper)``;
 
-const Wrapper = styled(KeyboardAwareScrollView)`
-  //align-items: center;
-  //padding: 0 40px;
-`;
+const Wrapper = styled(KeyboardAwareScrollView)``;
 
 const StepTitle = styled.Text`
   font-weight: 600;
@@ -117,10 +139,7 @@ const StepDescription = styled.Text`
   margin-bottom: 50px;
 `;
 
-const PhoneEmailInput = styled(TextInput)`
-  font-weight: 400;
-  font-size: 14px;
-  background-color: ${Colors.white};
+const PhoneEmailInput = styled(CommonInput)`
   margin-bottom: 50px;
   width: 100%;
 `;
@@ -136,14 +155,40 @@ const FooterButtonText = styled.Text`
   color: ${Colors.primary};
 `;
 
-const CodeInput = styled(TextInput)`
-  font-weight: 400;
-  font-size: 14px;
-  background-color: ${Colors.white};
+const CodeInput = styled(CommonInput)`
   text-align: center;
   margin-bottom: 20px;
   width: 100%;
   letter-spacing: 22px;
+`;
+
+const ReSendCodeWrapper = styled.View`
+  width: 100%;
+  padding: 0 40px;
+  margin-top: 10px;
+`;
+
+const ReSendCodeButton = styled.TouchableOpacity`
+  margin-top: 25px;
+  flex-direction: row;
+`;
+
+const ReSendCodeIcon = styled.Image`
+  width: 22px;
+  height: 18px;
+  margin-right: 23px;
+`;
+
+const ReSendCodeText = styled.Text`
+  font-weight: 400;
+  font-size: 14px;
+  color: ${Colors.black};
+`;
+
+const NewPassInput = styled(CommonInput)`
+  margin-bottom: 50px;
+  width: 100%;
+  text-align: center;
 `;
 
 export default memo(ForgotPasswordScreen);
