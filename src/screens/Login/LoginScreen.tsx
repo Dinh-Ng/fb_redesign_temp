@@ -55,7 +55,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const Wrapper = styled(KeyboardAwareScrollView)``;
+const Wrapper = styled(KeyboardAwareScrollView)`
+  background-color: ${Colors.white};
+`;
 
 const Logo = styled.Image`
   width: 50px;
