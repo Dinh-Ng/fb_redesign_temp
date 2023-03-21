@@ -12,4 +12,5 @@ export const Route = {
   // HOME
   HomeContainer: 'HomeContainer',
   HomeScreen: 'HomeScreen',
+  NewsFeedScreen: 'NewsFeedScreen',
 };
