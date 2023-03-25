@@ -1,7 +1,6 @@
 import React, {memo, useCallback} from 'react';
 import {StyleSheet} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {TextInput} from 'react-native-paper';
 import styled from 'styled-components/native';
 
 import {IMG_LOGO} from '@/assets';
