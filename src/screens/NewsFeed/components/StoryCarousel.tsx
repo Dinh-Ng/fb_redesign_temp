@@ -1,54 +1,62 @@
-import React, {useState} from 'react';
-import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
-import {NativeScrollEvent} from 'react-native/Libraries/Components/ScrollView/ScrollView';
-import {NativeSyntheticEvent} from 'react-native/Libraries/Types/CoreEventTypes';
+import React from 'react';
+import {Dimensions, FlatList, Image, StyleSheet, View} from 'react-native';
 
 const {width: screenWidth} = Dimensions.get('window');
 
-interface storyItem {
-  images?: any;
-}
+const data = [
+  {id: '1', uri: 'https://picsum.photos/id/10/250/200'},
+  {id: '2', uri: 'https://picsum.photos/id/20/250/200'},
+  {id: '3', uri: 'https://picsum.photos/id/30/250/200'},
+  {id: '4', uri: 'https://picsum.photos/id/40/250/200'},
+];
 
-type storyItems = storyItem[];
+const ITEM_WIDTH = screenWidth * 0.8;
+const ITEM_HEIGHT = 200;
+const SPACING = screenWidth * 0.2;
 
-const Carousel = ({storyItem}: any) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const TestCarousel = () => {
+  const renderItem = ({item}) => (
+    <View style={styles.slide}>
+      <Image style={styles.image} source={{uri: item.uri}} />
+    </View>
+  );
 
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const slideSize = event.nativeEvent.layoutMeasurement.width;
-    const currentIndex = event.nativeEvent.contentOffset.x / slideSize;
-    setActiveIndex(currentIndex);
-  };
-
-  console.log('storyItem', storyItem);
+  const keyExtractor = (item: {id: any}) => item.id;
 
   return (
     <View style={styles.container}>
-      <ScrollView
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        onScroll={handleScroll}>
-        {storyItem.map((image, index) => (
-          <View style={styles.slide} key={index}>
-            {image}
-          </View>
-        ))}
-      </ScrollView>
+        contentContainerStyle={styles.contentContainer}
+        snapToInterval={ITEM_WIDTH + SPACING}
+        // snapToAlignment="center"
+        decelerationRate="fast"
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
-    height: 300,
-    marginBottom: 20,
+    height: ITEM_HEIGHT,
+  },
+  contentContainer: {
+    paddingHorizontal: SPACING,
   },
   slide: {
-    width: screenWidth,
-    height: 300,
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT,
+    marginHorizontal: SPACING / 2,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 });
 
-export default Carousel;
+export default TestCarousel;
