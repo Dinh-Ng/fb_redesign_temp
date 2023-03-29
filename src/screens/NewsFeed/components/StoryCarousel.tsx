@@ -1,23 +1,52 @@
 import React from 'react';
-import {Dimensions, FlatList, Image, StyleSheet, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  ListRenderItem,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
-const {width: screenWidth} = Dimensions.get('window');
+import {Colors} from '@/themes/Colors';
 
-const data = [
-  {id: '1', uri: 'https://picsum.photos/id/10/250/200'},
-  {id: '2', uri: 'https://picsum.photos/id/20/250/200'},
-  {id: '3', uri: 'https://picsum.photos/id/30/250/200'},
-  {id: '4', uri: 'https://picsum.photos/id/40/250/200'},
+interface dataItem {
+  id: string;
+  name?: string;
+}
+
+const data: dataItem[] = [
+  {id: '1', name: 'Vish Patil'},
+  {id: '2', name: 'Rakesh Shetty'},
+  {id: '3', name: 'Vish Patil'},
+  {id: '4', name: 'Vish Patil'},
+  {id: '5', name: 'Vish Patil'},
+  {id: '6', name: 'Vish Patil'},
+  {id: '7', name: 'Vish Patil'},
 ];
 
-const ITEM_WIDTH = screenWidth * 0.8;
-const ITEM_HEIGHT = 200;
-const SPACING = screenWidth * 0.2;
+const ITEM_WIDTH = 90;
+const ITEM_HEIGHT = 130;
+const SPACING = 5;
 
 const TestCarousel = () => {
-  const renderItem = ({item}) => (
+  const renderItem: ListRenderItem<dataItem> = ({item}) => (
     <View style={styles.slide}>
-      <Image style={styles.image} source={{uri: item.uri}} />
+      <View>
+        <Image
+          style={styles.image}
+          source={{uri: `https://picsum.photos/id/${item.id}0/250/200`}}
+        />
+        {item.id !== '1' && (
+          <View style={styles.avatarView}>
+            <Image
+              style={styles.avatar}
+              source={{uri: `https://picsum.photos/id/${item.id}1/250/200`}}
+            />
+          </View>
+        )}
+      </View>
+      {item.id !== '1' && <Text style={styles.name}>{item.name}</Text>}
     </View>
   );
 
@@ -33,8 +62,8 @@ const TestCarousel = () => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}
-        snapToInterval={ITEM_WIDTH + SPACING}
-        // snapToAlignment="center"
+        snapToInterval={ITEM_WIDTH}
+        snapToAlignment="start"
         decelerationRate="fast"
       />
     </View>
@@ -43,19 +72,40 @@ const TestCarousel = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: ITEM_HEIGHT,
+    marginTop: 21,
   },
   contentContainer: {
-    paddingHorizontal: SPACING,
+    // paddingHorizontal: SPACING,
+    paddingLeft: 15,
   },
   slide: {
-    width: ITEM_WIDTH,
-    height: ITEM_HEIGHT,
-    marginHorizontal: SPACING / 2,
+    marginRight: SPACING,
+    alignItems: 'center',
   },
   image: {
-    width: '100%',
-    height: '100%',
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT,
+    borderRadius: 15,
+  },
+  name: {
+    fontWeight: '400',
+    fontSize: 10,
+    color: Colors.black,
+    marginTop: 12,
+  },
+  avatarView: {
+    borderWidth: 2,
+    borderRadius: 30,
+    borderColor: Colors.primary,
+    position: 'absolute',
+    bottom: 0,
+    right: '50%',
+    transform: [{translateX: 12}, {translateY: 12}],
+  },
+  avatar: {
+    width: 25,
+    height: 25,
+    borderRadius: 30,
   },
 });
 
