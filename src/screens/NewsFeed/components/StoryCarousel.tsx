@@ -29,7 +29,7 @@ const ITEM_WIDTH = 90;
 const ITEM_HEIGHT = 130;
 const SPACING = 5;
 
-const TestCarousel = () => {
+const Carousel = () => {
   const renderItem: ListRenderItem<dataItem> = ({item}) => (
     <View style={styles.slide}>
       <View>
@@ -73,6 +73,9 @@ const TestCarousel = () => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 21,
+    borderBottomWidth: 0.5,
+    borderColor: Colors.border,
+    paddingBottom: 15,
   },
   contentContainer: {
     // paddingHorizontal: SPACING,
@@ -109,4 +112,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TestCarousel;
+export default Carousel;

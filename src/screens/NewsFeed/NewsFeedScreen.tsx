@@ -40,25 +40,7 @@ const NewsFeedScreen = () => {
         />
       </ShortcutWrapper>
 
-      <StoryWrapper>
-        <StoryCarousel
-          storyItems={[
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_LOGO} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-            <TestImage source={IMG_ILLUSTRATION} />,
-          ]}
-        />
-      </StoryWrapper>
+      <StoryCarousel />
     </Container>
   );
 };
@@ -72,12 +54,6 @@ const ShortcutWrapper = styled.View`
   flex-direction: row;
   padding: 0 10px;
   margin-top: 17px;
-`;
-
-const StoryWrapper = styled.View``;
-
-const TestImage = styled.Image`
-  width: 90px;
 `;
 
 export default memo(NewsFeedScreen);
