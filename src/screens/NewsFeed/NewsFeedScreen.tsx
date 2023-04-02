@@ -6,6 +6,7 @@ import {IC_SEARCH, IMG_ILLUSTRATION, IMG_LOGO} from '@/assets';
 import CreatePost from '@/screens/NewsFeed/components/CreatePost';
 import ShortcutButton from '@/screens/NewsFeed/components/ShortcutButton';
 import StoryCarousel from '@/screens/NewsFeed/components/StoryCarousel';
+import UpdateAvatarPost from '@/screens/NewsFeed/posts/UpdateAvatarPost';
 import {Colors} from '@/themes/Colors';
 
 const NewsFeedScreen = () => {
@@ -41,6 +42,8 @@ const NewsFeedScreen = () => {
       </ShortcutWrapper>
 
       <StoryCarousel />
+
+      <UpdateAvatarPost />
     </Container>
   );
 };
