@@ -8,4 +8,5 @@ export const Colors = {
   border: '#aaaaaa',
   gray1: '#999999',
   gray2: 'rgba(238, 238, 238, 0.5)',
+  gray3: '#555555',
 };
