@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import styled from 'styled-components/native';
 
 import {IMG_AVATAR} from '@/assets';
+import FooterPost from '@/screens/NewsFeed/posts/FooterPost';
 import {Colors} from '@/themes/Colors';
 
 const UpdateAvatarPost = () => {
@@ -22,6 +23,8 @@ const UpdateAvatarPost = () => {
       <AvatarWrapper style={styles.boxShadow}>
         <NewAvatar source={IMG_AVATAR} />
       </AvatarWrapper>
+
+      <FooterPost />
     </Container>
   );
 };
