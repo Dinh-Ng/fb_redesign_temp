@@ -44,6 +44,7 @@ const NewsFeedScreen = () => {
       <StoryCarousel />
 
       <UpdateAvatarPost />
+      <UpdateAvatarPost />
     </Container>
   );
 };
